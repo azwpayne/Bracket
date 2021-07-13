@@ -18,11 +18,11 @@ cat <<EOF | tee -a ./redis_cluster_conf/startServer.bash
 #!/bin/bash
 Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228)
 for element in "\${Redis_Port[@]}"; do
-  cd "${element}" || exit
+  cd "\${element}" || exit
   pwd
-  echo "start server ${element}"
+  echo "start server \${element}"
   redis-server redis.conf || exit
-  echo "Startup complete ${element}"
+  echo "Startup complete \${element}"
   cd ..
 done
 EOF
