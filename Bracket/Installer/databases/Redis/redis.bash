@@ -1,14 +1,14 @@
 #!/usr/bin/bash
 
+RedisVerison=6.2.5
 # download Redis
-wget https://download.redis.io/releases/redis-6.2.4.tar.gz
-# create folder and  unzip Redis.tar.gz file
+wget "https://download.redis.io/releases/redis-$RedisVerison.tar.gz"
+## create folder and  unzip Redis.tar.gz file
 mkdir -p /opt/redis/
-tar xzf redis-6.2.4.tar.gz -C /opt/redis/
-# compile redis
-cd /opt/redis/redis-6.2.4
-make
-# link and Configure environment variables of redis
-ln -s /opt/redis/redis-6.2.4/ /usr/local/redis
-echo "export PATH=/usr/local/redis/src:$PATH" >>/etc/profile
-source /ect/profile
+tar xzf redis-$RedisVerison.tar.gz
+## compile redis
+cd /opt/redis/redis-$RedisVerison && make
+## link and Configure environment variables of redis
+ln -s /opt/redis/redis-$RedisVerison/ /usr/local/redis
+echo "export PATH=/usr/local/redis/src:$PATH" >> /etc/profile
+source /etc/profile
