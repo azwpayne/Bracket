@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# system init
+sed -i 's/enforcing/disabled/' /etc/selinux/config
+
 ## update
 yum -y update
 ## upgrade
