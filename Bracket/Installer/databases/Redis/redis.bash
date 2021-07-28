@@ -10,5 +10,4 @@ tar xzf redis-$RedisVerison.tar.gz -C /opt/redis/
 cd /opt/redis/redis-$RedisVerison && make
 ## link and Configure environment variables of redis
 ln -s /opt/redis/redis-$RedisVerison/ /usr/local/redis
-echo "export PATH=/usr/local/redis/src:\$PATH" >> /etc/profile
-source /etc/profile
+echo "export PATH=/usr/local/redis/src:\$PATH" >> /etc/profile && source /etc/profile

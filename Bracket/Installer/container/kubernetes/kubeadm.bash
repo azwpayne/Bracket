@@ -8,10 +8,8 @@ elif [[ $(uname -s) == "Linux" ]]; then
 else
   echo "windows?"
 fi
-# close firewalld
-systemctl disable firewalld
-## check firewall status
-systemctl status firewalld
+# close firewalld and check firewall status
+systemctl disable firewalld && systemctl status firewalld
 
 # close selinux
 sed -i 's/enforcing/disabled/' /etc/selinux/config
@@ -20,9 +18,9 @@ sed -i 's/enforcing/disabled/' /etc/selinux/config
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 
 # synchronised time
-yum -y install gcc automake autoconf libtool make gcc-c++ yum-utils iftop nethogs ntp ntpdate
-ntpdate time.windows.com
-systemctl start chronyd.service
+yum -y install gcc automake autoconf libtool make gcc-c++ yum-utils iftop nethogs ntp ntpdate &&
+  ntpdate time.windows.com &&
+  systemctl start chronyd.service
 
 # Traffic forwarding
 cat >/etc/sysctl.d/k8s.conf <<EOF
@@ -43,13 +41,33 @@ repo_gpgcheck=1
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 
+# View all version
+# yum list --showduplicates kubelet
 # install
-yum install -y kubelet-1.16.1 kubectl-1.16.1 kubeadm-1.16.1
-systemctl enable kubelet
-
+yum install -y kubelet-1.18.20-0 kubectl-1.18.20-0 kubeadm-1.18.20-0
+systemctl enable kubelet && systemctl enable kubelet.service
 # init
 kubeadm init \
   --apiserver-advertise-address=$ipaddrs \
   --image-repository registry.aliyuncs.com/google_containers \
   --service-cidr=10.96.0.0/12 \
   --pod-network-cidr=10.244.0.0/16
+
+########################
+#kubeadm init \
+#  --apiserver-advertise-address=192.168.0.244 \
+#  --image-repository registry.aliyuncs.com/google_containers \
+#  --service-cidr=10.96.0.0/12 \
+#  --pod-network-cidr=10.244.0.0/16
+########
+
+# configure CNI
+echo "199.232.28.133 raw.githubusercontent.com" >>/etc/hosts
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+# Enable IPVS and change the mode of kube-system/kube-proxy in the ConfigMap to IPVS
+kubectl edit cm kube-proxy -n kube-system
+mode: "" = "ipvs" >mode:
+
+#
+echo "source <(kubectl completion bash)" >> ~/.bashrc && source ~/.bashrc
