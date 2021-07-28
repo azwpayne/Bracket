@@ -23,7 +23,7 @@ for element in "${Redis_Port[@]}"; do
   cd ../
 done
 cd ../
-
+cp redis_cluster_conf /opt/redis/
 # start redis server
 cat <<EOF | tee -a ./redis_cluster_conf/startServer.bash
 #!/bin/bash
@@ -38,6 +38,7 @@ for element in "\${Redis_Port[@]}"; do
 done
 EOF
 
+bash ./redis_cluster_conf/startServer.bash
 # create cluster
 redis-cli --cluster create ${ipaddrs}:3220 \
   ${ipaddrs}:3221 \

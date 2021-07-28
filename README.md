@@ -13,6 +13,7 @@ Designed to avoid duplication of work
 
 - [x] Docker
 - [x] Helm
+- [x] kubernetes cluster
 
 ### Databases
 
