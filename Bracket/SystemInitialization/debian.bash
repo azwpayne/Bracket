@@ -4,23 +4,7 @@ sudo apt -y update && apt -y upgrade && apt -y full-upgrade && apt -y autoclean 
 # Download the required basic package
 sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release wget make gcc automake autoconf libtool
 
-# install golang
-## install go
-version=1.16.6
-pkg=go${version}.linux-amd64.tar.gz
-src=https://golang.google.cn/dl/$pkg
-echo "Downloading $pkg ..."
-sudo wget $src
-sudo tar -zxvf $pkg -C /opt
-## create Soft link
-sudo ln -s /opt/go/ /usr/local/go
-## Add the PATH environment variable
-sudo echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/profile && source /etc/profile
-# Add the GOPROXY
-echo "$(go env GOPROXY)"
-sudo go env -w GOPROXY=https://goproxy.cn,direct
-echo "$(go env GOPROXY)"
-echo "$(go env)"
+
 
 # install docker
 ##  Add Docker’s official GPG key:
