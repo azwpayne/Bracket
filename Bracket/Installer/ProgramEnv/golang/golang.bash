@@ -11,11 +11,11 @@ src=https://golang.google.cn/dl/$pkg
 echo "Downloading $pkg ..."
 sudo wget $src
 sudo tar -zxvf $pkg -C /opt
-## create Soft link
+## 2.create Soft link
 sudo ln -s /opt/go/ /usr/local/go
-## Add the PATH environment variable
+## 3. Add the PATH environment variable
 sudo echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/profile && source /etc/profile
-# Add the GOPROXY
+## 4.Add the GOPROXY
 echo "$(go env GOPROXY)"
 sudo go env -w GOPROXY=https://goproxy.cn,direct
 echo "$(go env GOPROXY)"

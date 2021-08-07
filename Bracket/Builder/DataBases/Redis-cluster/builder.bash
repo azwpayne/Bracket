@@ -38,14 +38,14 @@ for element in "\${Redis_Port[@]}"; do
 done
 EOF
 
-bash ./redis_cluster_conf/startServer.bash
+#bash ./redis_cluster_conf/startServer.bash
 # create cluster
-redis-cli --cluster create ${ipaddrs}:3220 \
-  ${ipaddrs}:3221 \
-  ${ipaddrs}:3222 \
-  ${ipaddrs}:3223 \
-  ${ipaddrs}:3224 \
-  ${ipaddrs}:3225 \
-  ${ipaddrs}:3226 \
-  ${ipaddrs}:3227 \
-  ${ipaddrs}:3228 -a 5by65aSn5peg5q+UcmVkaXM=
+#redis-cli --cluster create ${ipaddrs}:3220 \
+#  ${ipaddrs}:3221 \
+#  ${ipaddrs}:3222 \
+#  ${ipaddrs}:3223 \
+#  ${ipaddrs}:3224 \
+#  ${ipaddrs}:3225 \
+#  ${ipaddrs}:3226 \
+#  ${ipaddrs}:3227 \
+#  ${ipaddrs}:3228 -a 5by65aSn5peg5q+UcmVkaXM=
