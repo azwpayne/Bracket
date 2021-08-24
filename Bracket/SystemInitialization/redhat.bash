@@ -6,7 +6,7 @@
 WORK_DIR=$(pwd)
 # check user
 ## Root privileges are required when we initialize the system
-[[ $EUID -ne 0 ]] && echo 'Error: This script must be run as root!' && exit 1
+[[ $EUID -ne 0 ]] && echo 'ERROR: This script must be run as root!' && exit 1
 
 # Close selinux services
 /bin/sed -i 's/mingetty tty/mingetty --noclear tty/' /etc/inittab

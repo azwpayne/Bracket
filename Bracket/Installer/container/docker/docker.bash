@@ -4,6 +4,12 @@
 # email: wuzhipeng1289690157@gmail.com
 # Install docker
 
+## SHELL START
+
+# check Network
+ping -c 4 www.baidu.com && \
+  [ $? -ne 0 ] && echo "ERROR: The network is not smooth" && exit 1;
+
 # Uninstall old versions(Optional)
 sudo yum remove docker \
   docker-client \
@@ -24,3 +30,4 @@ sudo systemctl enable docker && sudo systemctl daemon-reload
 ## restart docker
 systemctl restart docker
 
+## SHEL END
