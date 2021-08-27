@@ -23,7 +23,7 @@ systemctl disable 'postfix' && systemctl disable 'NetworkManager' && systemctl d
 # add group and user
 groupadd -g 20000 payne
 useradd -g payne -u 20000 -s /bin/bash -c "Dev user" -m -d /home/payne payne
-echo MDcxOXBheW5lOTUyNw== | passwd --stdin payne
+echo MDcxOXBheW5lOTUyNw | passwd --stdin payne
 
 ## Configre sudoers
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
@@ -92,16 +92,13 @@ firewall-cmd --reload
 ## update or upgrade
 #yum -y update && yum -y upgrade && yum -y update-minimal
 ## install package
-yum -y install gcc automake autoconf libtool make gcc-c++ yum-utils iftop nethogs ntp ntpdate
+yum -y install curl gnupg \
+  lsb-release wget make gcc automake \
+  autoconf libtool tree iftop nethogs ntp ntpdate
+
 ## configure time synchronization
 ntpdate time.windows.com
 
 ### configure Command incomplete
 yum install -y bash-completion
 echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && source ~/.bashrc
-
-sys=$(lsb_release -a)
-if [[ $sys g   ]]; then
-    echo "Succeed"
-else
-    echo "Failed"
