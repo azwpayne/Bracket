@@ -20,9 +20,7 @@ sed -i 's/enforcing/disabled/' /etc/selinux/config
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 
 # synchronised time
-yum -y install gcc automake autoconf libtool make gcc-c++ yum-utils iftop nethogs ntp ntpdate
-ntpdate time.windows.com
-systemctl start chronyd.service
+yum -y install ntp ntpdate && ntpdate time.windows.com && systemctl start chronyd.service
 
 # Traffic forwarding
 cat >/etc/sysctl.d/k8s.conf <<EOF
@@ -43,13 +41,14 @@ repo_gpgcheck=1
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 
+# yum list kubelet --showduplicates | sort -r
 # install
 yum install -y kubelet-1.16.1 kubectl-1.16.1 kubeadm-1.16.1
 systemctl enable kubelet
 
 # init
 kubeadm init \
-  --apiserver-advertise-address=$ipaddrs \
+  --apiserver-advertise-address=192.168.0.27 \
   --image-repository registry.aliyuncs.com/google_containers \
   --service-cidr=10.96.0.0/12 \
   --pod-network-cidr=10.244.0.0/16

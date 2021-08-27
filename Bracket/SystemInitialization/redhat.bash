@@ -90,11 +90,12 @@ firewall-cmd --reload
 
 
 ## update or upgrade
-#yum -y update && yum -y upgrade && yum -y update-minimal
+yum -y update && yum -y upgrade && yum -y update-minimal
 ## install package
 yum -y install curl gnupg \
   lsb-release wget make gcc automake \
-  autoconf libtool tree iftop nethogs ntp ntpdate
+  autoconf libtool tree iftop nethogs ntp ntpdate \
+  yum-utils yum-config-manager
 
 ## configure time synchronization
 ntpdate time.windows.com
