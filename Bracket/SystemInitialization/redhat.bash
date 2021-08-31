@@ -13,12 +13,16 @@ WORK_DIR=$(pwd)
 /bin/sed -i 's/SELINUX=permissive/SELINUX=disabled/' /etc/selinux/config
 /bin/sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 
+# Custom bash
 /bin/cat <<EOF >>/etc/profile
 export PS1='\u@\h:\w\n\\$ '
 EOF
 
 # Close unuseful services
-systemctl disable 'postfix' && systemctl disable 'NetworkManager' && systemctl disable 'abrt-ccpp'
+systemctl stop postfix &&  \
+    systemctl disable 'postfix' && \
+    systemctl disable 'NetworkManager' && \
+    systemctl disable 'abrt-ccpp'
 
 # add group and user
 groupadd -g 20000 payne
@@ -29,7 +33,7 @@ echo MDcxOXBheW5lOTUyNw | passwd --stdin payne
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
 sed -i 's/^Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \\/Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR SSH_AUTH_SOCK \\/' /etc/sudoers
 
-cat <<EOF >>/etc/sudoers
+cat << EOF >>/etc/sudoers
 
 # payne using sudo
 %payne        ALL=(ALL)       NOPASSWD: ALL
@@ -87,14 +91,16 @@ fi
 /bin/sed -i 's/port=\"22\"/port=\"9122\"/' /usr/lib/firewalld/services/ssh.xml
 firewall-cmd --reload
 
-
-
+# update kernel
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org && \
+    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm && \
+    yum --enablerepo=elrepo-kernel install -y kernel-lt &&
+    grub2-set-default 0 && uname -r
 ## update or upgrade
 yum -y update && yum -y upgrade && yum -y update-minimal
 ## install package
-yum -y install curl gnupg \
-  lsb-release wget make gcc automake \
-  autoconf libtool tree iftop nethogs ntp ntpdate \
+yum -y install curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
+  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate \
   yum-utils yum-config-manager
 
 ## configure time synchronization
@@ -103,3 +109,5 @@ ntpdate time.windows.com
 ### configure Command incomplete
 yum install -y bash-completion
 echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && source ~/.bashrc
+
+reboot

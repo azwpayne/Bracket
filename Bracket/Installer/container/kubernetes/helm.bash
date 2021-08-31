@@ -14,5 +14,13 @@ yum install -y wget && \
 tar -zxvf ${pkg} && \
     mv linux-amd64/helm /usr/local/bin/helm
 
+# add Commonly used repo
+helm repo add aliyun https://apphub.aliyuncs.com/ && \
+    helm repo add bitnami https://charts.bitnami.com/bitnami/ && \
+    helm repo add azure https://mirror.azure.cn/kubernetes/charts/ &&
+
+# update repo
+helm repo update
+
 # check helm version
 helm version
