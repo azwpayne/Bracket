@@ -20,3 +20,7 @@ echo "$(go env GOPROXY)"
 sudo go env -w GOPROXY=https://goproxy.cn,direct
 echo "$(go env GOPROXY)"
 echo "$(go env)"
+
+GOROOT="/usr/local/go/"
+GOBIN="${GOROOT}/bin"
+export "PATH=$PATH:${GOBIN}"

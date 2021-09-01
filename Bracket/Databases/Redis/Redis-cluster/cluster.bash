@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+
+# Settings
+PORT=3219
+TIMEOUT=2000
+NODES=10
+REPLICAS=2
+PROTECTED_MODE=yes
+ADDITIONAL_OPTIONS=""
+PASSWD=5by65aSn5peg5q+UcmVkaXM
+
+# You may want to put the above config parameters into config.sh in order to
+# override the defaults without modifying this script.
+if [ -a config.sh ]; then
+   source "config.sh"
+fi
+
+# Computed vars
+ENDPORT=$((PORT+NODES))
+
+if [ "$1" == "start" ]; then
+    while [ $((PORT < ENDPORT)) != "0" ]; do
+        PORT=$((PORT+1))
+        echo "Starting $PORT"
+        redis-server --port $PORT  \
+        --protected-mode $PROTECTED_MODE \
+        --cluster.bash-enabled yes \
+        --cluster.bash-config-file nodes-${PORT}.conf \
+        --cluster.bash-node-timeout $TIMEOUT \
+        --appendonly yes \
+        --appendfilename appendonly-${PORT}.aof \
+        --dbfilename dump-${PORT}.rdb \
+        --logfile ${PORT}.log \
+        --daemonize yes ${ADDITIONAL_OPTIONS} \
+        --requirepass $PASSWD
+    done
+    exit 0
+fi
+
+if [ "$1" == "create" ]; then
+    HOSTS=""
+    CLUSTER_HOST=$(curl http://checkip.amazonaws.com/ && [ $? -ne 0 ] && echo "ERROR: The network is not smooth" && exit 1;)
+    while [ $((PORT < ENDPORT)) != "0" ]; do
+        PORT=$((PORT+1))
+        HOSTS="$HOSTS $CLUSTER_HOST:$PORT"
+    done
+    OPT_ARG=""
+    if [ "$2" == "-f" ]; then
+        OPT_ARG="--cluster-yes"
+    fi
+    redis-cli --cluster.bash create $HOSTS -a $PASSWD --cluster.bash-replicas $REPLICAS $OPT_ARG
+    exit 0
+fi
+
+if [ "$1" == "stop" ]
+then
+    while [ $((PORT < ENDPORT)) != "0" ]; do
+        PORT=$((PORT+1))
+        echo "Stopping $PORT"
+        redis-cli -p $PORT -a $PASSWD shutdown nosave
+    done
+    exit 0
+fi
+
+if [ "$1" == "watch" ]
+then
+    PORT=$((PORT+1))
+    while [ 1 ]; do
+        clear
+        date
+        redis-cli -p $PORT  -a $PASSWD cluster.bash nodes  | head -30
+        sleep 1
+    done
+    exit 0
+fi
+
+if [ "$1" == "tail" ]; then
+    INSTANCE=$2
+    PORT=$((PORT+INSTANCE))
+    tail -f ${PORT}.log
+    exit 0
+fi
+
+if [ "$1" == "tailall" ]; then
+    tail -f *.log
+    exit 0
+fi
+
+if [ "$1" == "call" ]; then
+    while [ $((PORT < ENDPORT)) != "0" ]; do
+        PORT=$((PORT+1))
+        redis-cli -p $PORT $2 $3 $4 $5 $6 $7 $8 $9 -a $PASSWD
+    done
+    exit 0
+fi
+
+if [ "$1" == "clean" ]; then
+    rm -rf *.log
+    rm -rf appendonly*.aof
+    rm -rf dump*.rdb
+    rm -rf nodes*.conf
+    exit 0
+fi
+
+if [ "$1" == "clean-logs" ]; then
+    rm -rf *.log
+    exit 0
+fi
+
+echo "Usage:      [start|create|stop|watch|tail|clean|call]"
+echo "start       -- Launch Redis Cluster instances."
+echo "create [-f] -- Create a cluster using redis-cli --cluster create."
+echo "stop        -- Stop Redis Cluster instances."
+echo "watch       -- Show CLUSTER NODES output (first 30 lines) of first node."
+echo "tail <id>   -- Run tail -f of instance at base port + ID."
+echo "tailall     -- Run tail -f for all the log files at once."
+echo "clean       -- Remove all instances data, logs, configs."
+echo "clean-logs  -- Remove just instances logs."
+echo "call <cmd>  -- Call a command (up to 7 arguments) on all nodes."
