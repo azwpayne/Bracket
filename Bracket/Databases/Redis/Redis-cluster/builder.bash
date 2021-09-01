@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Create Redis cluster.bash
+# Create Redis cluster
 
 ## Variable
 Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228 3229)
@@ -47,7 +47,7 @@ done
 EOF
 
 #bash ./redis_cluster_conf/startServer.bash
-# create cluster.bash
+# create cluster
 redis-cli  -a 5by65aSn5peg5q+UcmVkaXM --cluster.bash create \
   $IP:3220 $IP:3221 $IP:3222 $IP:3223 $IP:3224 \
   $IP:3225 $IP:3226 $IP:3227 $IP:3228 $IP:3229 \
