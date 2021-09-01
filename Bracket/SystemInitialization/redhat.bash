@@ -108,6 +108,6 @@ ntpdate time.windows.com
 
 ### configure Command incomplete
 yum install -y bash-completion
-echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && source ~/.bashrc
+echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
 
 reboot

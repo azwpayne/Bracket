@@ -1,15 +1,22 @@
-#!/usr/bin/bash
-# Prepare configuration file
-Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228)
+#!/usr/bin/env bash
 
-# Get the first network card address
+# Create Redis cluster
+
+## Variable
+Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228 3229)
+
+## Get the first network card address
 if [[ $(uname -s) == "Darwin" ]]; then
-  ipaddrs=$(ifconfig en0 | grep -E "inet 1.*? netmask" | awk '{print $2}')
+  LOCALHOST=$(ifconfig en0 | grep -E "inet 1.*? netmask" | awk '{print $2}')
 elif [[ $(uname -s) == "Linux" ]]; then
-  ipaddrs=$(ifconfig eth0 | awk 'NR==2 {print $2}')
+  LOCALHOST=$(ifconfig eth0 | awk 'NR==2 {print $2}')
 else
   echo "windows?"
+  exit 1;
 fi
+
+## remote IP
+IP=$(curl http://checkip.amazonaws.com/ && [ $? -ne 0 ] && echo "ERROR: The network is not smooth" && exit 1;)
 
 # make file dir
 mkdir redis_cluster_conf && cd redis_cluster_conf
@@ -40,12 +47,7 @@ EOF
 
 #bash ./redis_cluster_conf/startServer.bash
 # create cluster
-#redis-cli --cluster create ${ipaddrs}:3220 \
-#  ${ipaddrs}:3221 \
-#  ${ipaddrs}:3222 \
-#  ${ipaddrs}:3223 \
-#  ${ipaddrs}:3224 \
-#  ${ipaddrs}:3225 \
-#  ${ipaddrs}:3226 \
-#  ${ipaddrs}:3227 \
-#  ${ipaddrs}:3228 -a 5by65aSn5peg5q+UcmVkaXM=
+#redis-cli  -a 5by65aSn5peg5q+UcmVkaXM= --cluster create \
+#  $IP:3220 $IP:3221 $IP:3222 $IP:3223 $IP:3224 \
+#  $IP:3225 $IP:3226 $IP:3227 $IP:3228 $IP:3229 \
+#  --no-auth-warning --cluster-replicas 1
