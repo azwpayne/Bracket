@@ -32,9 +32,10 @@ done
 cd ../
 cp redis_cluster_conf /opt/redis/
 # start redis server
-cat <<EOF | tee -a ./redis_cluster_conf/startServer.bash
+cat << EOF | tee -a ./redis_cluster_conf/startServer.bash
 #!/bin/bash
-Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228)
+Redis_Port=(3220 3221 3222 3223 3224 3225 3226 3227 3228 3229)
+
 for element in "\${Redis_Port[@]}"; do
   cd "\${element}" || exit
   pwd
