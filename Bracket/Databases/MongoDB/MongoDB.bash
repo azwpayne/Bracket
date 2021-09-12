@@ -4,8 +4,6 @@
 # email: wuzhipeng1289690157@gmail.com
 # Install Mongo
 
-# system: Red Hat
-
 ## 1.Configure the package management system
 cat << EOF | sudo tee -a /etc/yum.repos.d/mongodb-org-4.4.repo
 [mongodb-org-4.4]
@@ -19,7 +17,10 @@ EOF
 ## 2.Install the MongoDB packages
 sudo yum install -y mongodb-org
 
-sudo yum install -y mongodb-org-5.0.1 mongodb-org-database-5.0.1 mongodb-org-server-5.0.1 mongodb-org-shell-5.0.1 mongodb-org-mongos-5.0.1 mongodb-org-tools-5.0.1
+sudo yum install -y \
+     mongodb-org-5.0.1 mongodb-org-database-5.0.1 \
+     mongodb-org-server-5.0.1 mongodb-org-shell-5.0.1 \
+     mongodb-org-mongos-5.0.1 mongodb-org-tools-5.0.1
 
-# system: Debian
+
 

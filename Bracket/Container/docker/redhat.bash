@@ -36,11 +36,10 @@ sudo yum makecache fast && sudo yum install -y docker-ce docker-ce-cli container
 ## add some params
 cat > /etc/docker/daemon.json << EOF
 {
-"exec-opts": ["native.cgroupdriver=systemd"]
-"log-driver": "json-file",
-"log-opts": {
-    "max-size": "100m"
-  }
+  "exec-opts": ["native.cgroupdriver=systemd"]
+  "log-driver": "json-file",
+  "log-opts": {"max-size": "100m"}
+  "registry-mirrors": ["https://etdea28s.mirror.aliyuncs.com"]
 }
 EOF
 
