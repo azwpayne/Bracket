@@ -31,8 +31,10 @@ if [ "$1" == "start" ]; then
         --appendfilename appendonly-${PORT}.aof \
         --dbfilename dump-${PORT}.rdb \
         --logfile ${PORT}.log \
-        --daemonize yes ${ADDITIONAL_OPTIONS} \
-        --requirepass $PASSWD
+        --aof-use-rdb-preamble yes \
+        --daemonize yes  \
+        --requirepass $PASSWD \
+        --${ADDITIONAL_OPTIONS}
     done
     exit 0
 fi
