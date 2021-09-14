@@ -7,17 +7,17 @@ version=3.5.2
 pkg=helm-v${version}-linux-amd64.tar.gz
 
 # download helm
-yum install -y wget && \
-    wget -c https://get.helm.sh/${pkg}
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 # install it
 tar -zxvf ${pkg} && \
-    mv linux-amd64/helm /usr/local/bin/helm
+  mv linux-amd64/helm /usr/local/bin/helm
 
 # add Commonly used repo
 helm repo add aliyun https://apphub.aliyuncs.com/ && \
-    helm repo add bitnami https://charts.bitnami.com/bitnami/ && \
-    helm repo add azure https://mirror.azure.cn/kubernetes/charts/ &&
+  helm repo add bitnami https://charts.bitnami.com/bitnami/ && \
+  helm repo add azure https://mirror.azure.cn/kubernetes/charts/ && \
+  helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # update repo
 helm repo update
