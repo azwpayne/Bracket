@@ -71,7 +71,7 @@ then
         clear
         date
         redis-cli -p $PORT  -a $PASSWD cluster nodes  | head -30
-        sleep 1
+        sleep 3
     done
     exit 0
 fi
