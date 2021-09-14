@@ -92,10 +92,10 @@ fi
 firewall-cmd --reload
 
 # update kernel
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org && \
-    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm && \
-    yum --enablerepo=elrepo-kernel install -y kernel-lt && \
-    grub2-set-default 0 && uname -r
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum --enablerepo=elrepo-kernel install -y kernel-lt
+grub2-set-default 0 && uname -r
 ## update or upgrade
 yum -y update && yum -y upgrade && yum -y update-minimal && yum clean
 ## install package
