@@ -17,8 +17,8 @@ tar -zxvf ${pkg} && \
 helm repo add aliyun https://apphub.aliyuncs.com/ && \
   helm repo add bitnami https://charts.bitnami.com/bitnami/ && \
   helm repo add azure https://mirror.azure.cn/kubernetes/charts/ && \
-  helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-
+  helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && \
+  helm repo add stable https://charts.helm.sh/stable
 # update repo
 helm repo update
 
