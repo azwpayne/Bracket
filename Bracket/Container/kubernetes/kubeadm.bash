@@ -53,9 +53,10 @@ EOF
 
 # yum list kubelet --showduplicates | sort -r
 # install
-yum install -y kubelet-1.16.1 kubectl-1.16.1 kubeadm-1.16.1
+#yum install -y kubelet-1.16.1 kubectl-1.16.1 kubeadm-1.16.1
 yum install -y kubelet-1.19.8 kubectl-1.19.8 kubeadm-1.19.8
 systemctl enable kubelet
+echo "exclude=kube*" >> /etc/yum.conf
 
 # init
 kubeadm init \

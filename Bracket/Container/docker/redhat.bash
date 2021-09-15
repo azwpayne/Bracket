@@ -21,24 +21,17 @@ sudo yum remove docker \
 ## Set up the repository
 sudo yum install -y yum-utils
 
-read -p "Use aliyun mirror [Y/N]:" Signal
-if [[ ${Signal} == "Y" ]]; then
-  sudo yum-config-manager \
-  --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-else
-  sudo yum-config-manager \
-  --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-fi
+sudo yum-config-manager \
+--add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
 
 ## Install Docker Engine
 sudo yum makecache fast && sudo yum install -y docker-ce docker-ce-cli containerd.io
 
 ## add some params
+mkdir -p /etc/docker
 cat > /etc/docker/daemon.json << EOF
 {
-  "exec-opts": ["native.cgroupdriver=systemd"]
-  "log-driver": "json-file",
-  "log-opts": {"max-size": "100m"}
   "registry-mirrors": ["https://etdea28s.mirror.aliyuncs.com"]
 }
 EOF
