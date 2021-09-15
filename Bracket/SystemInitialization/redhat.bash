@@ -15,7 +15,7 @@ WORK_DIR=$(pwd)
 
 # Custom bash
 /bin/cat <<EOF >>/etc/profile
-export PS1='\u@\h:\w\n\\$ '
+export PS1='\n\u@\h:\w\n\\$ '
 EOF
 
 # Close unuseful services
@@ -108,6 +108,6 @@ ntpdate time.windows.com
 
 ### configure Command incomplete
 yum install -y bash-completion
-echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
-
+echo "source /usr/share/bash-completion/bash_completion" >> /etc/profile
+source /etc/profile
 #reboot
