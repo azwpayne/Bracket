@@ -38,4 +38,4 @@ Linux ecs-b0ad-k8s-master 3.10.0-1160.15.2.el7.x86_64 #1 SMP Wed Feb 3 15:06:38 
 
 ### ProgramEnv
 
-- [x] golang
+- [x] Go
