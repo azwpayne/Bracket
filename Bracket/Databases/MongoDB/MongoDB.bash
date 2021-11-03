@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# @author: payne
+# @email: wuzhipeng1289690157@gmail.com
 # doc: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
-# author: payne
-# email: wuzhipeng1289690157@gmail.com
-# Install Mongo
+# Install Mongo for redhat
 
 ## 1.Configure the package management system
 cat << EOF | sudo tee -a /etc/yum.repos.d/mongodb-org-4.4.repo
@@ -16,6 +16,7 @@ EOF
 
 ## 2.Install the MongoDB packages
 sudo yum install -y mongodb-org
+
 
 sudo yum install -y \
      mongodb-org-5.0.1 mongodb-org-database-5.0.1 \

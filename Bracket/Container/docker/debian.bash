@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# @author: payne
+# @email: wuzhipeng1289690157@gmail.com
+# docs: https://docs.docker.com/engine/install/debian/
+# Install Docker for debian
 
 # install docker
 ##  Add Docker’s official GPG key:

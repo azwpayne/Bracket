@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-# author: payne
-# email: wuzhipeng1289690157@gmail.com
+# @author: payne
+# @email: wuzhipeng1289690157@gmail.com
 # Set up Go development environment
-
-[[ $EUID -ne 0 ]] && echo 'ERROR: This script must be run as root!' && exit 1
 
 VERSION=1.17.2
 PKG=go${VERSION}.linux-amd64.tar.gz

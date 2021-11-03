@@ -1,5 +1,7 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+# @author: payne
+# @email: wuzhipeng1289690157@gmail.com
+# Install Kubernetes Cluster for redhat
 # Get the first network card address
 if [[ $(uname -s) == "Darwin" ]]; then
   ipaddrs=$(ifconfig en0 | grep -E "inet 1.*? netmask" | awk '{print $2}')
@@ -8,6 +10,7 @@ elif [[ $(uname -s) == "Linux" ]]; then
 else
   echo "windows?"
 fi
+
 # close firewalld
 systemctl disable firewalld && systemctl status firewalld
 

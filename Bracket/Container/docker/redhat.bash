@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
+# @author: payne
+# @email: wuzhipeng1289690157@gmail.com
 # docs:https://docs.docker.com/engine/install/centos/
-# author: payne
-# email: wuzhipeng1289690157@gmail.com
-# Install docker
+# Install docker for redhat
 
 # check Network
 ping -c 4 www.baidu.com && \
