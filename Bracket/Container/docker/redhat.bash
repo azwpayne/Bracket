@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # @author: payne
 # @email: wuzhipeng1289690157@gmail.com
-# docs:https://docs.docker.com/engine/install/centos/
+# docs: https://docs.docker.com/engine/install/centos/
 # Install docker for redhat
 
 # check Network
@@ -40,4 +40,4 @@ EOF
 mkdir -p /etc/systemd/system/docker.service.d && \
     sudo systemctl enable docker && sudo systemctl daemon-reload
 ## restart docker
-systemctl restart docker
+systemctl restart dockers
