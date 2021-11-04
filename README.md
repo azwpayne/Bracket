@@ -1,7 +1,7 @@
 # Bracket
 
 Bracket Is a script project used in work,Successfully tested and deployed based on centos 7
-Designed to avoid duplication of work
+Designed to avoid duplication of work。
 
 ## System Version
 
