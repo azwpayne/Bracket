@@ -8,11 +8,9 @@
 # Official Script: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # Domestic Script: /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
 
-/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
-brew update && brew upgrade && brew doctor && brew cleanup
-
 # arch is m1
 function m1() {
+  /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
   arch -arm64 brew install \
     coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
     tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
@@ -40,6 +38,7 @@ function m1() {
 
 # arch is x86
 function x86() {
+  /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
   brew install \
     coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
     tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
@@ -64,8 +63,11 @@ function x86() {
     dash docker iterm2 karabiner-elements keycastr licecap \
     marked slack spotify telegram typora whatsapp
 }
+
 if [[ $(arch) == "arm64" ]]; then
   m1
 else
   x86
 fi
+
+brew update && brew upgrade && brew doctor && brew cleanup
