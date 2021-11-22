@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# Brief description of your script
+# Copyright 2021 wu.zhipeng
+
+# Install HomeBrew
+# Official：https://brew.sh/
+# Domestic：https://brew.idayer.com/
+# Official Script: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Domestic Script: /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
+
+/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
+brew update && brew upgrade && brew doctor && brew cleanup
+
+# arch is m1
+function m1() {
+  arch -arm64 brew install \
+    coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
+    tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
+    colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
+    curl unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib \
+    libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
+    keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 \
+    pngcrush watch pidof pinfo atool exif cloc gnupg grc pango bat \
+    poppler icdiff git-cal git-extras pass peco ranger wget fd \
+    xmlstarlet highlight shellcheck sshfs ccat editorconfig ctop \
+    htop progress httpstat catimg fzf fzy ripgrep httpie pgcli \
+    php go node yarn zsh fish diff-so-fancy proselint subliminal yamllint \
+    mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
+    kubernetes-cli helm kubectx stern gawk pineentry-mac \
+    mysql mongodb-community redis nginx unbound
+
+  arch -arm64 brew install --cask \
+    miniconda android-platform-tools \
+    pycharm goland intellij-idea datagrip phpstorm android-studio visual-studio-code \
+    another-redis-desktop-manager \
+    transmission mpv atom bartender beyond-compare clipy contexts \
+    dash docker iterm2 karabiner-elements keycastr licecap \
+    marked slack spotify telegram typora whatsapp
+}
+
+# arch is x86
+function x86() {
+  brew install \
+    coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
+    tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
+    colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
+    curl unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib \
+    libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
+    keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 \
+    pngcrush watch pidof pinfo atool exif cloc gnupg grc pango bat \
+    poppler icdiff git-cal git-extras pass peco ranger wget fd \
+    xmlstarlet highlight shellcheck sshfs ccat editorconfig ctop \
+    htop progress httpstat catimg fzf fzy ripgrep httpie pgcli \
+    php go node yarn zsh fish diff-so-fancy proselint subliminal yamllint \
+    mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
+    kubernetes-cli helm kubectx stern gawk pineentry-mac \
+    mysql mongodb-community redis nginx unbound
+
+  brew install --cask \
+    miniconda android-platform-tools \
+    pycharm goland intellij-idea datagrip phpstorm android-studio visual-studio-code \
+    another-redis-desktop-manager \
+    transmission mpv atom bartender beyond-compare clipy contexts \
+    dash docker iterm2 karabiner-elements keycastr licecap \
+    marked slack spotify telegram typora whatsapp
+}
+if [[ $(arch) == "arm64" ]]; then
+  m1
+else
+  x86
+fi
