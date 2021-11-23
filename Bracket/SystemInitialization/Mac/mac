@@ -25,7 +25,7 @@ function m1() {
     php go node yarn zsh fish diff-so-fancy proselint subliminal yamllint \
     mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
     kubernetes-cli helm kubectx stern gawk pineentry-mac \
-    mysql mongodb-community redis nginx unbound
+    mysql mongodb-community redis nginx unbound jadx
 
   arch -arm64 brew install --cask \
     miniconda android-platform-tools \
