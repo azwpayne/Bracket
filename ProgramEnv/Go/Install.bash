@@ -13,9 +13,7 @@ sudo cat >> /etc/profile << EOF
 export PATH=\$PATH:/usr/local/go/bin
 EOF
 
-source /etc/profile
-
-go env -w GOPROXY=https://goproxy.cn,direct
+source /etc/profilego env -w GOPROXY=https://goproxy.cn,direct
 go env GOPROXY
 go env
 echo "Successful Installation ${PKG} ..."
