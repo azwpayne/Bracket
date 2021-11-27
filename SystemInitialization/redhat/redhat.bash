@@ -19,10 +19,10 @@ export PS1='\n\u@\h:\w\n\\$ '
 EOF
 
 # Close unuseful services
-systemctl stop postfix &&  \
-    systemctl disable 'postfix' && \
-    systemctl disable 'NetworkManager' && \
-    systemctl disable 'abrt-ccpp'
+systemctl stop postfix &&
+  systemctl disable 'postfix' &&
+  systemctl disable 'NetworkManager' &&
+  systemctl disable 'abrt-ccpp'
 
 # add group and user
 groupadd -g 20000 payne
@@ -33,7 +33,7 @@ echo MDcxOXBheW5lOTUyNw | passwd --stdin payne
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
 sed -i 's/^Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \\/Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR SSH_AUTH_SOCK \\/' /etc/sudoers
 
-cat << EOF >>/etc/sudoers
+cat <<EOF >>/etc/sudoers
 
 # payne using sudo
 %payne        ALL=(ALL)       NOPASSWD: ALL
@@ -46,7 +46,7 @@ EOF
 # Sysctl config
 found=$(grep -c net.ipv4.tcp_tw_recycle /etc/sysctl.conf)
 if ! [ $found -gt "0" ]; then
-    cat >/etc/sysctl.conf <<EOF
+  cat >/etc/sysctl.conf <<EOF
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
 fs.file-max = 131072
@@ -76,14 +76,13 @@ sysctl -p
 # Max open files
 found=$(grep -c "^* soft nproc" /etc/security/limits.conf)
 if ! [ $found -gt "0" ]; then
-    cat >>/etc/security/limits.conf <<EOF
+  cat >>/etc/security/limits.conf <<EOF
 * soft nproc 2048
 * hard nproc 16384
 * soft nofile 8192
 * hard nofile 65536
 EOF
 fi
-
 
 # ssh config
 /bin/sed -i 's/.*Port[[:space:]].*$/Port 9122/' /etc/ssh/ssh_config
@@ -108,6 +107,6 @@ ntpdate time.windows.com
 
 ### configure Command incomplete
 yum install -y bash-completion
-echo "source /usr/share/bash-completion/bash_completion" >> /etc/profile
+echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
 #reboot
