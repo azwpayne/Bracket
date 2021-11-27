@@ -15,7 +15,7 @@ fi
 systemctl disable firewalld && systemctl status firewalld
 
 # close selinux
-setenforce 0 &&  sed -i 's/enforcing/disabled/' /etc/selinux/config && getenforce
+setenforce 0 && sed -i 's/enforcing/disabled/' /etc/selinux/config && getenforce
 
 # close swap
 swapoff -a && sed -ri 's/.*swap.*/#&/' /etc/fstab
@@ -23,7 +23,7 @@ swapoff -a && sed -ri 's/.*swap.*/#&/' /etc/fstab
 # synchronised time
 yum -y install ntp ntpdate timedatectl && ntpdate time.windows.com && systemctl start chronyd.service
 timedatectl set-timezone Asia/Shanghai && timedatectl set-local-rtc 0 && systemctl restart rsyslog \
-    systemctl restart crond.service
+  systemctl restart crond.service
 
 # Traffic forwarding
 cat >/etc/sysctl.d/k8s.conf <<EOF
@@ -59,7 +59,7 @@ EOF
 #yum install -y kubelet-1.16.1 kubectl-1.16.1 kubeadm-1.16.1
 yum install -y kubelet-1.19.8 kubectl-1.19.8 kubeadm-1.19.8
 systemctl enable kubelet
-echo "exclude=kube*" >> /etc/yum.conf
+echo "exclude=kube*" >>/etc/yum.conf
 
 # init
 kubeadm init \

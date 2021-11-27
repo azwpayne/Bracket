@@ -2,7 +2,6 @@
 
 # Install single redis
 
-
 Redis_Version=6.2.5
 
 # download Redis
@@ -17,6 +16,6 @@ cd /opt/redis/redis-${Redis_Version} && make
 
 ## link and Configure environment variables of redis
 ln -s /opt/redis/redis-${Redis_Version}/ /usr/local/redis
-echo "export PATH=/usr/local/redis/src:\$PATH" >> /etc/profile
+echo "export PATH=/usr/local/redis/src:\$PATH" >>/etc/profile
 source /etc/profile## rm Installation package
 rm -rf redis-${Redis_Version}.tar.gz
