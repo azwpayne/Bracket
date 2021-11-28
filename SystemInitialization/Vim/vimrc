@@ -46,10 +46,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'skywind3000/vim-dict'
 Plug 'airblade/vim-gitgutter'
-" a nice statusline
-Plug 'vim-airline/vim-airline'
-" syntax checking and semantic errors
-Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'              " a nice statusline
+Plug 'dense-analysis/ale'                   " syntax checking and semantic errors
 Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
