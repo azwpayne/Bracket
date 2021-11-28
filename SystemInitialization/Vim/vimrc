@@ -9,11 +9,10 @@ set guifont=Monaco:h13                  " set guifont is Monaco
 syntax on                               " open Syntax highlighting
 set noswapfile                           " close swap file
 let g:solarized_termcolors=256
-set background=dark
-set wrap
-set fileformat=unix
+set background=dark                     " set background is dark
+set wrap                                " auto wrap
+set fileformat=unix                      " set file format is unix
 set cindent
-set tabstop=4
 set shiftwidth=4
 set showmatch
 set scrolloff=5
@@ -23,9 +22,8 @@ set backspace=2
 set selection=exclusive
 set selectmode=mouse,key
 set matchtime=5
-set ignorecase
+set ignorecase                          " Ignore case matching
 set hlsearch
-set noexpandtab
 set whichwrap+=<,>,h,l
 set autoread
 set autoindent
