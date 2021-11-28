@@ -1,3 +1,4 @@
+" set vim config
 set nocompatible                        " incompatible vi
 set modifiable                           " open buffers
 set number                              " show line number
@@ -10,6 +11,7 @@ syntax on                               " open Syntax highlighting
 set noswapfile                           " close swap file
 let g:solarized_termcolors=256
 set background=dark                     " set background is dark
+" set window show
 set wrap                                " auto wrap
 set fileformat=unix                      " set file format is unix
 set cindent
@@ -33,11 +35,8 @@ set shiftwidth=4
 set autowrite
 let g:deoplete#enable_at_startup = 1
 
-filetype plugin indent on
-map <silent> <C-e> :NERDTreeToggle<CR>
-nmap <space> :
-
 " Plug Menu
+filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
@@ -172,8 +171,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -324,9 +323,10 @@ if has('conceal')
 endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-
-" config window change
+" config keyboard change
 noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
+map <silent> <C-e> :NERDTreeToggle<CR>
+nmap <space> :
