@@ -1,25 +1,21 @@
-" vim menu config
 set nocompatible                        " incompatible vi
-set modifiable                          " opne buffers
+set modifiable                           " opne buffers
+set number                              " show line number
 set guioptions-=r                       " don't show scroll on right
 set guioptions-=L                       " don't show left scroll on split
 set guioptions-=b                       " don't show bottom scroll
 set showtabline=0                       " don't show label
 set guifont=Monaco:h13                  " set fuifont is Monaco
-set background=dark
-let g:solarized_termcolors=256
-set autowrite
-
-" file config
 syntax on                               " open Syntax highlighting
-set noswapfile                           "  prohibit file swap
-set number                              " show line number
-set fileformat=unix
-filetype indent on
+set noswapfile
+let g:solarized_termcolors=256
+set background=dark
 set wrap
+set fileformat=unix
 set cindent
 set tabstop=4
 set shiftwidth=4
+set showmatch
 set scrolloff=5
 set laststatus=2
 set fenc=utf-8
@@ -27,6 +23,8 @@ set backspace=2
 set selection=exclusive
 set selectmode=mouse,key
 set matchtime=5
+set ignorecase
+set hlsearch
 set noexpandtab
 set whichwrap+=<,>,h,l
 set autoread
@@ -34,18 +32,14 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set autowrite
 let g:deoplete#enable_at_startup = 1
 
-" search config
-set ic
-set hlsearch
-set ignorecase
-set hlsearch
-set showmatch
-
-
-" Plug config Menu
 filetype plugin indent on
+map <silent> <C-e> :NERDTreeToggle<CR>
+nmap <space> :
+
+" Plug Menu
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
@@ -61,6 +55,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 " syntax checking and semantic errors
 Plug 'dense-analysis/ale'
+Plug 'Raimondi/delimitMate'
+"
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Track the engine.
@@ -141,13 +137,6 @@ let g:NERDToggleCheckAllLines = 1
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-set termencoding=utf-8
-set fileencodings=utf-8
-if has("win32")
-    set fileencoding=chinese
-else
-    set fileencoding=utf-8
-endif
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -338,9 +327,6 @@ endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
-" cahange keyboard
-map <silent> <C-e> :NERDTreeToggle<CR>
-nmap <space> :
 " config window change
 noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
