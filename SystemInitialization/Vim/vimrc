@@ -7,7 +7,7 @@ set guioptions-=b                       " don't show bottom scroll
 set showtabline=0                       " don't show label
 set guifont=Monaco:h13                  " set fuifont is Monaco
 syntax on                               " open Syntax highlighting
-set noswapfile
+set noswapfile                           " close swap file
 let g:solarized_termcolors=256
 set background=dark
 set wrap
