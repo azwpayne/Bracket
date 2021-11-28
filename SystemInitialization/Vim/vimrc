@@ -1,11 +1,11 @@
 set nocompatible                        " incompatible vi
-set modifiable                           " opne buffers
+set modifiable                           " open buffers
 set number                              " show line number
 set guioptions-=r                       " don't show scroll on right
 set guioptions-=L                       " don't show left scroll on split
 set guioptions-=b                       " don't show bottom scroll
 set showtabline=0                       " don't show label
-set guifont=Monaco:h13                  " set fuifont is Monaco
+set guifont=Monaco:h13                  " set guifont is Monaco
 syntax on                               " open Syntax highlighting
 set noswapfile                           " close swap file
 let g:solarized_termcolors=256
@@ -322,7 +322,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " For conceal markers.
 if has('conceal')
-set conceallevel=2 concealcursor=niv
+    set conceallevel=2 concealcursor=niv
 endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
