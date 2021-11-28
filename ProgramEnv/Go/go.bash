@@ -9,11 +9,9 @@ SRC=https://golang.google.cn/dl/${PKG}
 echo "Downloading ${SRC} ..."
 sudo wget -c ${SRC}
 sudo tar -zxf ${PKG} -C /usr/local/
-sudo cat >>/etc/profile <<EOF
-export PATH=\$PATH:/usr/local/go/bin
-EOF
-
-source /etc/profilego env -w GOPROXY=https://goproxy.cn,direct
+sudo echo "export PATH=\$PATH:/usr/local/go/bin" >>/etc/profile
+source /etc/profile
+go env -w GOPROXY=https://goproxy.cn,direct
 go env GOPROXY
 go env
 echo "Successful Installation ${PKG} ..."
