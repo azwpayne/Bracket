@@ -14,7 +14,7 @@ function m1() {
   arch -arm64 brew install \
     coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
     tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
-    colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
+    tldr duf glances exa ag axel colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
     curl unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib \
     libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
     keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 \
@@ -42,7 +42,7 @@ function x86() {
   brew install \
     coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
     tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
-    colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
+    tldr duf glances exa ag axel colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
     curl unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib \
     libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
     keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 \
