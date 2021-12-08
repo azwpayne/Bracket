@@ -1,20 +1,21 @@
-" set vim config
 set nocompatible                        " incompatible vi
-set modifiable                           " open buffers
-set number                              " show line number
-set guioptions-=r                       " don't show scroll on right
+set modifiable                          " opne buffers
+set number                              " show line number                        
+set guioptions-=r                       " don't show scroll on right  
 set guioptions-=L                       " don't show left scroll on split
 set guioptions-=b                       " don't show bottom scroll
-set showtabline=0                       " don't show label
-set guifont=Monaco:h13                  " set guifont is Monaco
+set showtabline=0                       " don't show label  
+set showcmd                             " show last exec command history
+set guifont=Monaco:h13                  " set fuifont is Monaco
 syntax on                               " open Syntax highlighting
-set noswapfile                           " close swap file
+set noswapfile                          " close swap file
+set ruler                               " set Document percentage
 let g:solarized_termcolors=256
-set background=dark                     " set background is dark
-"Interface display config
-set wrap                                " auto wrap
-set fileformat=unix                      " set file format is unix
+set background=dark                     
+set wrap        
+set fileformat=unix
 set cindent
+set tabstop=4
 set shiftwidth=4
 set showmatch
 set scrolloff=5
@@ -24,8 +25,9 @@ set backspace=2
 set selection=exclusive
 set selectmode=mouse,key
 set matchtime=5
-set ignorecase                          " Ignore case matching
+set ignorecase
 set hlsearch
+set noexpandtab
 set whichwrap+=<,>,h,l
 set autoread
 set autoindent
@@ -35,19 +37,32 @@ set shiftwidth=4
 set autowrite
 let g:deoplete#enable_at_startup = 1
 
-" Plug Menu
 filetype plugin indent on
+map <silent> <C-e> :NERDTreeToggle<CR>
+nmap <space> :
+
+" Plug Menu
 call plug#begin('~/.vim/plugged')
+" vim git support
 Plug 'tpope/vim-fugitive'
+" easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
+" a Syntax check support
 Plug 'scrooloose/syntastic'
+" a Document directory tree
 Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'skywind3000/vim-dict'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'              " a nice statusline
-Plug 'dense-analysis/ale'                   " syntax checking and semantic errors
+" a nice statusline
+Plug 'vim-airline/vim-airline'
+" support use tab to insert content 
+Plug 'ervandew/supertab'
+" command ack use 
+Plug 'mileszs/ack.vim'
+" syntax checking and semantic errors
+Plug 'dense-analysis/ale'
 Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -73,6 +88,7 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 call plug#end()
 
 " Plug config
@@ -84,6 +100,7 @@ let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1, 'go': '*', 'python': '*'
 set cpt=.,k,w,b
 
 " don't select the first item.
+
 set completeopt=menu,menuone,noselect
 
 " suppress annoy messages.
@@ -164,8 +181,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -193,6 +210,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -202,6 +220,7 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -310,14 +329,13 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " For conceal markers.
 if has('conceal')
-    set conceallevel=2 concealcursor=niv
+set conceallevel=2 concealcursor=niv
 endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-" config keyboard change
+
+" config window change 
 noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
-map <silent> <C-e> :NERDTreeToggle<CR>
-nmap <space> :
