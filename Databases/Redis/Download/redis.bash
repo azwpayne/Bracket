@@ -17,5 +17,6 @@ cd /opt/redis/redis-${Redis_Version} && make
 ## link and Configure environment variables of redis
 ln -s /opt/redis/redis-${Redis_Version}/ /usr/local/redis
 echo "export PATH=/usr/local/redis/src:\$PATH" >>/etc/profile
-source /etc/profile## rm Installation package
+# rm Installation package
+source /etc/profile
 rm -rf redis-${Redis_Version}.tar.gz
