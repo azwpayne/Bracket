@@ -17,5 +17,5 @@ redis-server --port ${PORT} \
   --requirepass "${PASSWD}"
 
 echo "====================="
-echo -e "passwd: ${PASSWD}"
+echo " passwd: ${PASSWD}  "
 echo "====================="
