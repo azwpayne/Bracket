@@ -89,6 +89,16 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+" auto pairs
+Plug jiangmiao/auto-pairs'
+
+" add notes
+Plug 'scrooloose/nerdcommenter'
+
+" high lighted
+
+Plug 'machakann/vim-highlightedyank'/
+
 call plug#end()
 
 " Plug config
@@ -334,7 +344,10 @@ endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
-" config window change 
+" change  high light time
+let g:highlightedyank_highlight_duration = 1000
+
+" config window change
 noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
