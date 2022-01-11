@@ -1,19 +1,12 @@
 # Kali initialization configure
 
-```shell
-sudo apt -y update && apt -y upgrade && apt -y full-upgrade && apt -y autoclean && apt -y autoremove
-sudo apt install -y apt-transport-https ca-certificates curl gnupg \
-  lsb-release wget make gcc automake \
-  autoconf libtool tree iftop nethogs ntp ntpdate
+## time zone setting
+
+```bash
+dpkg-reconfihure tzdata
+apt install -y xfont-intl-chinese
+apt install tff-wqy-microhei
 ```
-
-## install gnome desktop
-
-```shell
-sudo apt-get install -y kali-desktop-gnome
-```
-
-> 安装后选择gdm3重启即可
 
 ## install Input editor
 
