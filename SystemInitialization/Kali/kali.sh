@@ -8,7 +8,7 @@ sudo apt -y update &&
 # Install dependencies
 sudo apt install -y apt-transport-https ca-certificates \
   curl gnupg lsb-release wget make gcc automake \
-  autoconf libtool tree iftop nethogs jnettop ntp ntpdate \
+  autoconf libtool tree iftop nethogs jnettop htop fd-find git tig ntp ntpdate \
   build-essential libssl-dev zliblg-dev libbz2-dev \
   libreadline-dev libsqlite3-dev llvm libncurses5-dev \
   libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev \
