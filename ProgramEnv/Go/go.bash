@@ -3,7 +3,7 @@
 # @email: wuzhipeng1289690157@gmail.com
 # Set up Go development environment
 
-VERSION=1.17.2
+VERSION=1.17.6
 PKG=go${VERSION}.linux-amd64.tar.gz
 SRC=https://golang.google.cn/dl/${PKG}
 echo "Downloading ${SRC} ..."
