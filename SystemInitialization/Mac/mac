@@ -24,7 +24,7 @@ brew install \
   php go node yarn zsh fish diff-so-fancy proselint subliminal yamllint \
   mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
   kubernetes-cli helm kubectx stern gawk pineentry-mac \
-  mysql mongodb-community redis nginx unbound jadx
+  mysql mongodb-community redis nginx unbound jadx multitail
 
 brew install --cask \
   miniconda android-platform-tools \
