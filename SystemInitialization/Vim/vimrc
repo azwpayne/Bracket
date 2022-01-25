@@ -92,6 +92,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'jiangmiao/auto-pairs'                                  " auto pairs
     Plug 'scrooloose/nerdcommenter'                              " add notes
     Plug 'machakann/vim-highlightedyank'                         " high lighted
+    Plug 'onivim/oni'
+    Plug 'rhysd/NyaoVim'
+    Plug 'neomake/neomake'
+    Plug 'kassio/neoterm'
+    Plug 'ncm2/ncm2'
 call plug#end()
 
 " Plug config
