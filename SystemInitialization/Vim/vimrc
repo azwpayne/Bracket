@@ -1,4 +1,3 @@
-set nocompatible                        " incompatible vi
 set nocompatible
 set number
 syntax on
@@ -11,7 +10,6 @@ set cscopeverbose
 set complete-=i
 set display=lastline,msgsep
 set encoding=utf-8
-set fillchars=vert:|,fold:
 set formatoptions=tcqj
 set fsync
 set history=9999
@@ -34,7 +32,7 @@ set guioptions-=L                       " don't show left scroll on split
 set guioptions-=b                       " don't show bottom scroll
 set showtabline=0                       " don't show label
 set showcmd                             " show last exec command history
-set guifont=JetBrains Mono:h13          " set fuifont is Monaco
+set guifont=Monaco:h13         	 				" set fuifont is Monaco
 set noswapfile                          " close swap file
 let g:solarized_termcolors=256
 set background=dark                     
@@ -55,8 +53,6 @@ set whichwrap+=<,>,h,l
 set autowrite
 let g:deoplete#enable_at_startup = 1
 nmap <space> :
-
-
 map <silent> <C-e> :NERDTreeToggle<CR>
 
 " Plug Menu
