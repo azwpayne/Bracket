@@ -1,15 +1,41 @@
 set nocompatible                        " incompatible vi
-set modifiable                          " opne buffers
-set number                              " show line number                        
+set nocompatible
+set number
+syntax on
+filetype plugin indent on
+set autoread
+set autoindent
+set backspace=indent,eol,start
+set belloff=all
+set cscopeverbose
+set complete-=i
+set display=lastline,msgsep
+set encoding=utf-8
+set fillchars=vert:|,fold:
+set formatoptions=tcqj
+set fsync
+set history=9999
+set hlsearch
+set incsearch
+set langnoremap
+set laststatus=2
+set nrformats=bin,hex
+set ruler
+set sessionoptions-=options
+set shortmess=F
+set sidescroll=1
+set smarttab
+set tabpagemax=99
+set ttyfast
+set viminfo+=!
+set wildmenu
 set guioptions-=r                       " don't show scroll on right  
 set guioptions-=L                       " don't show left scroll on split
 set guioptions-=b                       " don't show bottom scroll
-set showtabline=0                       " don't show label  
+set showtabline=0                       " don't show label
 set showcmd                             " show last exec command history
-set guifont=Monaco:h13                  " set fuifont is Monaco
-syntax on                               " open Syntax highlighting
+set guifont=JetBrains Mono:h13          " set fuifont is Monaco
 set noswapfile                          " close swap file
-set ruler                               " set Document percentage
 let g:solarized_termcolors=256
 set background=dark                     
 set wrap        
@@ -19,27 +45,19 @@ set tabstop=4
 set shiftwidth=4
 set showmatch
 set scrolloff=5
-set laststatus=2
 set fenc=utf-8
-set backspace=2
 set selection=exclusive
 set selectmode=mouse,key
 set matchtime=5
 set ignorecase
-set hlsearch
 set noexpandtab
 set whichwrap+=<,>,h,l
-set autoread
-set autoindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
 set autowrite
 let g:deoplete#enable_at_startup = 1
-
-filetype plugin indent on
-map <silent> <C-e> :NERDTreeToggle<CR>
 nmap <space> :
+
+
+map <silent> <C-e> :NERDTreeToggle<CR>
 
 " Plug Menu
 call plug#begin('~/.vim/plugged')
