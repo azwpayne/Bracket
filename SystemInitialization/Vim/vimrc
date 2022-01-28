@@ -76,13 +76,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'Raimondi/delimitMate'
     Plug 'preservim/nerdcommenter'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'SirVer/ultisnips'                 " Track the engine.
     Plug 'honza/vim-snippets'               " Snippets are separated from the engine. Add this if you want them:
     " Make sure you use single quotes
     " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
     Plug 'junegunn/vim-easy-align'
     Plug 'https://github.com/junegunn/vim-github-dashboard.git'  " Any valid git URL is allowed
-    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'          " Multiple Plug commands can be written in a single line using | separators
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }      " On-demand loading
     Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }         " Using a non-default branch
@@ -309,12 +307,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" Plug UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " Plug key-mappings.
 " Note: It must be "imap" and "smap". It uses <Plug> mappings.
