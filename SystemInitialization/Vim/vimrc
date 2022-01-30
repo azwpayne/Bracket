@@ -8,7 +8,6 @@ set backspace=indent,eol,start
 set belloff=all
 set cscopeverbose
 set complete-=i
-set display=lastline,msgsep
 set encoding=utf-8
 set formatoptions=tcqj
 set fsync
