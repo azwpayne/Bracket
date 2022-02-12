@@ -96,9 +96,9 @@ firewall-cmd --reload
 #yum --enablerepo=elrepo-kernel install -y kernel-lt
 #grub2-set-default 0 && uname -r
 ## update or upgrade
-yum -y update && yum -y upgrade && yum -y update-minimal && yum clean
+yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache
 ## install package
-yum -y install curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
+yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
   lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate \
   yum-utils yum-config-manager
 
