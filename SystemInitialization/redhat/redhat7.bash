@@ -104,13 +104,12 @@ firewall-cmd --reload
 ## update or upgrade
 yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache
 ## install package
-yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
-  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager \
-  cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq \
-  expat-devel openssl-devel tig
+yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
+yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
+yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq
+yum -y install expat-devel openssl-devel tig bash-completion
 
 ### configure Command incomplete
-yum install -y bash-completion
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
 
@@ -125,5 +124,5 @@ git config --global core.longpaths true
 git config --global core.quotepath off
 git lfs install --skip-repo
 # use git mirror
-# git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
+ git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
 #reboot

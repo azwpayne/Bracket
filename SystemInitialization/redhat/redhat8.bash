@@ -108,13 +108,12 @@ firewall-cmd --reload
 yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache
 ## install package
 yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
-  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
-  cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq
-  expat-devel openssl-devel tig
+yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
+yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq
+yum -y install expat-devel openssl-devel tig bash-completion
 
 yum group install "development tools"
 ### configure Command incomplete
-yum install -y bash-completion
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
 
