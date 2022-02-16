@@ -15,7 +15,8 @@ WORK_DIR=$(pwd)
 
 # Custom bash
 /bin/cat <<EOF >>/etc/profile
-export PS1='\n\u@\h:\w\n\\$ '
+#export PS1='\n\u@\h:\w\n\\$ '
+export PS1='[\u@dev W]$ '
 EOF
 
 # Close unuseful services
@@ -27,7 +28,11 @@ systemctl stop postfix &&
 # add group and user
 groupadd -g 20000 payne
 useradd -g payne -u 20000 -s /bin/bash -c "Dev user" -m -d /home/payne payne
-echo MDcxOXBheW5lOTUyNw | passwd --stdin payne
+echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin payne
+
+useradd gopher
+usermod -aG wheel going
+echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin gopher
 
 ## Configre sudoers
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
@@ -37,7 +42,7 @@ cat <<EOF >>/etc/sudoers
 
 # payne using sudo
 %payne        ALL=(ALL)       NOPASSWD: ALL
-
+%gopher        ALL=(ALL)       NOPASSWD: ALL
 EOF
 
 # Change Intel P-state
@@ -95,18 +100,30 @@ firewall-cmd --reload
 #rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 #yum --enablerepo=elrepo-kernel install -y kernel-lt
 #grub2-set-default 0 && uname -r
+
 ## update or upgrade
 yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache
 ## install package
 yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
-  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate \
-  yum-utils yum-config-manager
-
-## configure time synchronization
-ntpdate time.windows.com
+  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager \
+  cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq \
+  expat-devel openssl-devel tig
 
 ### configure Command incomplete
 yum install -y bash-completion
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
+
+## configure time synchronization
+ntpdate time.windows.com
+
+## git config
+git config --global user.name "paynewu"
+git config --global user.email "wuzhipeng1289690157@gmail.com"
+git config --global credential.helper store
+git config --global core.longpaths true
+git config --global core.quotepath off
+git lfs install --skip-repo
+# use git mirror
+# git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
 #reboot

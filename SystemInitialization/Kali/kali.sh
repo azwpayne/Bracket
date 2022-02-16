@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+
 sudo apt -y update &&
   apt -y upgrade &&
   apt -y full-upgrade &&
@@ -13,9 +14,12 @@ sudo apt install -y apt-transport-https ca-certificates \
   libreadline-dev libsqlite3-dev llvm libncurses5-dev \
   libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev \
   python-openssl g++ libgcc-9-dev gcc-9-base mitmproxy
+
+sudo apt intall cmake gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq expat-devel openssl-devel
 # Install miniconda
 wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh &&
   sh Miniconda3-latest-Linux-x86_64.sh
+
 #sudo apt-get install -y kali-desktop-gnome
 #apt-get install fcitx
 #apt-get install fcitx-googlepinyin
