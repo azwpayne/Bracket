@@ -124,5 +124,5 @@ git config --global core.longpaths true
 git config --global core.quotepath off
 git lfs install --skip-repo
 # use git mirror
- git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
+# git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
 #reboot
