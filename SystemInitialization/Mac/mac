@@ -13,7 +13,7 @@
 brew install \
   coreutils gnutls bash bash-completion@2 less z mas entr tmux bc \
   tmux-mem-cpu-load tmux-xpanes reattach-to-user-namespace tree \
-  tldr duf glances exa ag axel colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
+  isacikgoz/taps/tldr duf glances exa ag axel colordiff pstree jq urlview tcpdump nmap readline rsync aria2 \
   curl unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib \
   libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
   keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 \
@@ -24,7 +24,8 @@ brew install \
   php go node yarn zsh fish diff-so-fancy proselint subliminal yamllint \
   mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
   kubernetes-cli helm kubectx stern gawk pineentry-mac \
-  mysql mongodb-community redis nginx unbound jadx multitail git-lfs
+  mysql mongodb-community redis nginx unbound jadx multitail git-lfs \
+  wtfutil gotop
 
 brew install --cask \
   miniconda android-platform-tools \
