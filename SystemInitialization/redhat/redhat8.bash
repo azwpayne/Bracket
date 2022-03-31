@@ -112,7 +112,7 @@ yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop ne
 yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq
 yum -y install expat-devel openssl-devel tig bash-completion
 
-yum group install "development tools"
+yum group install -y "development tools"
 ### configure Command incomplete
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
@@ -121,7 +121,7 @@ source /etc/profile
 #ntpdate time.windows.com
 
 ## git config
-git config --global user.name "paynewu"
+git config --global user.name "payne-wu"
 git config --global user.email "wuzhipeng1289690157@gmail.com"
 git config --global credential.helper store
 git config --global core.longpaths true
