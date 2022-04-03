@@ -31,11 +31,9 @@ systemctl stop postfix &&
 # add group and user
 groupadd -g 20000 payne
 useradd -g payne -u 20000 -s /bin/bash -c "Dev user" -m -d /home/payne payne
+usermod -aG wheel payne
 echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin payne
 
-useradd gopher
-usermod -aG wheel going
-echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin gopher
 
 ## Configre sudoers
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
