@@ -39,13 +39,6 @@ echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin payne
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
 sed -i 's/^Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \/Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR SSH_AUTH_SOCK \/' /etc/sudoers
 
-cat <<EOF >>/etc/sudoers
-
-# payne using sudo
-%payne        ALL=(ALL)       NOPASSWD: ALL
-%gopher        ALL=(ALL)       NOPASSWD: ALL
-EOF
-
 # Change Intel P-state
 /bin/sed -i '/GRUB_CMDLINE_LINUX/{s/"$//g;s/$/ intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll"/}' /etc/default/grub
 
