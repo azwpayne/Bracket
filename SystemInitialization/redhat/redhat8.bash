@@ -16,9 +16,7 @@ WORK_DIR=$(pwd)
 
 # Custom bash
 /bin/cat <<EOF >>/etc/profile
-#export PS1='
-\u@h:w
-\$ '
+#export PS1='\u@h:w\$ '
 export PS1='[\u@dev W]$ '
 EOF
 
@@ -33,7 +31,6 @@ groupadd -g 20000 payne
 useradd -g payne -u 20000 -s /bin/bash -c "Dev user" -m -d /home/payne payne
 usermod -aG wheel payne
 echo 'MDcxOXBheW5lOTUyNw' | passwd --stdin payne
-
 
 ## Configre sudoers
 sed -i 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
@@ -96,14 +93,13 @@ firewall-cmd --reload
 #grub2-set-default 0 && uname -r
 
 ## update or upgrade
-yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache
+sudo yum -y update && sudo yum -y upgrade && sudo yum group install -y "development tools"
 ## install package
-yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
-yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
-yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq
-yum -y install expat-devel openssl-devel tig bash-completion
+sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
+sudo yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
+sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags
+sudo yum -y install expat-devel openssl-devel tig bash-completion
 
-yum group install -y "development tools"
 ### configure Command incomplete
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile

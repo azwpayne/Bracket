@@ -9,12 +9,12 @@ SRC="https://golang.google.cn/dl/${PKG}"
 echo "Downloading ${SRC} ..."
 sudo wget -c "${SRC}"
 sudo tar -zxf "${PKG}" -C /usr/local/
-sudo cat <<EOF >>/etc/profile
-# config golang config
-export GO111MODULE="on"
-export GOPROXY=https://goproxy.cn,direct # 安装 Go 模块时，代理服务器设置
-EOF
 
+export GO111MODULE='on'
+export GOPROXY='https://goproxy.cn,direct'
+export GOROOT='/usr/local/go'
+export GOPATH='/www/workspace/go'
+export PATH=${GOROOT}/bin:${GOPATH}/bin:$PATH
 
 source /etc/profile
 go env -w GOPROXY="https://goproxy.cn,direct"
