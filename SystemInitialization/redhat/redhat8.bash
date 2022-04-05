@@ -94,6 +94,8 @@ firewall-cmd --reload
 
 ## update or upgrade
 sudo yum -y update && sudo yum -y upgrade && sudo yum group install -y "development tools"
+sudo sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
+sudo sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
 ## install package
 sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
 sudo yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
@@ -114,3 +116,5 @@ git config --global credential.helper store
 git config --global core.longpaths true
 git config --global core.quotepath off
 git lfs install --skip-repo
+
+
