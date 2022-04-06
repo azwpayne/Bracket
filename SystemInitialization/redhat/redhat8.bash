@@ -105,7 +105,7 @@ sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glib
 sudo yum -y install expat-devel openssl-devel tig bash-completion libtermcap-devel ncurses-devel libevent-devel readline-devel
 
 ### configure Command incomplete
-echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
+echo "source /usr/share/bash-completion/bash_completion" >> /etc/profile
 source /etc/profile
 
 ## configure time synchronization
