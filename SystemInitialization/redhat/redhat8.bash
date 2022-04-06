@@ -93,14 +93,16 @@ firewall-cmd --reload
 #grub2-set-default 0 && uname -r
 
 ## update or upgrade
-sudo yum -y update && sudo yum -y upgrade && sudo yum group install -y "development tools"
 sudo sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
 sudo sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
+sudo yum clean all && sudo yum makecache
+sudo yum -y update && sudo yum -y upgrade && sudo yum -y update-minimal
 ## install package
-sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git
-sudo yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate yum-utils yum-config-manager
+sudo yum group install -y "development tools"
+sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim neovim net-tools git
+sudo yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs yum-utils htop
 sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags
-sudo yum -y install expat-devel openssl-devel tig bash-completion
+sudo yum -y install expat-devel openssl-devel tig bash-completion libtermcap-devel ncurses-devel libevent-devel readline-devel
 
 ### configure Command incomplete
 echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
