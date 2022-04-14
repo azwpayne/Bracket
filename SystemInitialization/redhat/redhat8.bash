@@ -99,9 +99,9 @@ sudo yum clean all && sudo yum makecache
 sudo yum -y update && sudo yum -y upgrade && sudo yum -y update-minimal
 ## install package
 sudo yum group install -y "development tools"
-sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim neovim net-tools git
+sudo yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim neovim net-tools
 sudo yum -y install lsb-release wget make gcc automake autoconf libtool tree iftop nethogs yum-utils htop
-sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags
+sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel telnet ctags
 sudo yum -y install expat-devel openssl-devel tig bash-completion libtermcap-devel ncurses-devel libevent-devel readline-devel
 
 ### configure Command incomplete
@@ -112,6 +112,8 @@ source /etc/profile
 #ntpdate time.windows.com
 
 ## git config
+dnf install -y http://opensource.wandisco.com/centos/8/git/x86_64/git-2.31.1-1.WANdisco.469.x86_64.rpm
+dnf install -y git-lfs
 git config --global user.name "payne-wu"
 git config --global user.email "wuzhipeng1289690157@gmail.com"
 git config --global credential.helper store
