@@ -29,7 +29,7 @@ sudo yum makecache fast && sudo yum install -y docker-ce docker-ce-cli container
 
 ## add some params
 mkdir -p /etc/docker
-cat >/etc/docker/daemon.json <<EOF
+cat <<EOF >>/etc/docker/daemon.json
 {
   "registry-mirrors": ["https://etdea28s.mirror.aliyuncs.com"]
 }

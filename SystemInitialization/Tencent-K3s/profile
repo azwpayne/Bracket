@@ -1,0 +1,6 @@
+alias cls='clear'
+alias vim='nvim'
+source /usr/share/bash-completion/bash_completion
+source <(kubectl completion bash)
+alias helm='helm3 --kubeconfig=/etc/rancher/k3s/k3s.yaml'
+source <(helm completion bash)
