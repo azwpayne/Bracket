@@ -50,7 +50,7 @@ EOF
 
 # Sysctl config
 found=$(grep -c net.ipv4.tcp_tw_recycle /etc/sysctl.conf)
-if ! [ $found -gt "0" ]; then
+if ! [ "$found" -gt "0" ]; then
   cat >/etc/sysctl.conf <<EOF
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
@@ -80,7 +80,7 @@ sysctl -p
 
 # Max open files
 found=$(grep -c "^* soft nproc" /etc/security/limits.conf)
-if ! [ $found -gt "0" ]; then
+if ! [ "$found" -gt "0" ]; then
   cat >>/etc/security/limits.conf <<EOF
 * soft nproc 2048
 * hard nproc 16384
@@ -117,7 +117,7 @@ source /etc/profile
 ntpdate time.windows.com
 
 ## git config
-git config --global user.name "paynewu"
+git config --global user.name "payne-wu"
 git config --global user.email "wuzhipeng1289690157@gmail.com"
 git config --global credential.helper store
 git config --global core.longpaths true
