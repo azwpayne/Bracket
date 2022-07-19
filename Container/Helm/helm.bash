@@ -13,11 +13,13 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 tar -zxvf ${pkg} &&
   mv linux-amd64/helm /usr/local/bin/helm
 # add Commonly used repo
-helm repo add aliyuncs https://apphub.aliyuncs.com/
+helm repo add apphub https://apphub.aliyuncs.com/
 helm repo add bitnami https://charts.bitnami.com/bitnami/
 helm repo add azure https://mirror.azure.cn/kubernetes/charts/
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo add stable https://charts.helm.sh/stable
+helm repo add googleapis https://kubernetes-charts.storage.googleapis.com
+helm repo add aliyuncs https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 # update repo
 helm repo update
 # check helm version
