@@ -15,7 +15,7 @@ brew install \
   bat poppler icdiff git-cal git-extras pass peco ranger wget fd xmlstarlet highlight shellcheck sshfs ccat editorconfig \
   ctop htop progress httpstat catimg fzf fzy ripgrep httpie pgcli zsh fish diff-so-fancy proselint subliminal yamllint \
   mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils kubernetes-cli helm kubectx stern gawk pineentry-mac \
-  mysql mongodb-community redis nginx unbound jadx multitail git-lfs wtfutil gotop deno act
+  mysql mongodb-community redis nginx unbound jadx multitail git-lfs wtfutil gotop deno act dust bottom
 
 brew install --cask \
   miniconda android-platform-tools \
@@ -23,6 +23,6 @@ brew install --cask \
   another-redis-desktop-manager \
   transmission mpv atom bartender beyond-compare clipy contexts \
   dash docker iterm2 karabiner-elements keycastr licecap \
-  marked slack spotify telegram typora whatsapp
+  marked slack spotify telegram typora whatsapp fig
 
 brew update && brew upgrade && brew doctor && brew cleanup
