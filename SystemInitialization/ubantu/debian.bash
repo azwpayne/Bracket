@@ -8,4 +8,4 @@ ping -c 4 www.baidu.com &&
 sudo apt -y update && apt -y upgrade && apt -y full-upgrade && apt -y autoclean && apt -y autoremove
 # Download the required basic package
 sudo apt install -y apt-transport-https ca-certificates curl gnupg \
-  lsb-release wget make gcc automake autoconf libtool tree iftop nethogs ntp ntpdate g++ htop fd-find
+  lsb-release wget make build-essential gcc automake autoconf libtool tree iftop nethogs ntp ntpdate g++ htop fd-find
