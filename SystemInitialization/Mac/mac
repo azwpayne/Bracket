@@ -23,6 +23,6 @@ brew install --cask \
   another-redis-desktop-manager \
   transmission mpv atom bartender beyond-compare clipy contexts \
   dash docker iterm2 karabiner-elements keycastr licecap \
-  marked slack spotify telegram typora whatsapp fig
+  marked slack spotify telegram typora whatsapp fig monitorcontrol
 
 brew update && brew upgrade && brew doctor && brew cleanup
