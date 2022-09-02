@@ -41,7 +41,7 @@ sed -i 's/^Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDED
 
 # Sysctl config
 found=$(grep -c net.ipv4.tcp_tw_recycle /etc/sysctl.conf)
-if ! [ $found -gt "0" ]; then
+if ! [ "$found" -gt "0" ]; then
   cat >/etc/sysctl.conf <<EOF
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
@@ -98,9 +98,9 @@ sudo sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.
 sudo yum clean all && sudo yum makecache
 sudo yum -y update && sudo yum -y upgrade && sudo yum -y update-minimal
 ## install package
-sudo yum group install -y "development tools" && sudo yum -y install epel-release curl gnupg  \
-  conntrack ipvsadm ipset jq iptables sysstat libseccomp vim neovim net-tools wget make gcc automake  \
-  autoconf libtool tree iftop nethogs yum-utils htop cmake autoconf automake perl-CPAN libcurl-devel  \
+sudo yum group install -y "development tools" && sudo yum -y install epel-release curl gnupg \
+  conntrack ipvsadm ipset jq iptables sysstat libseccomp vim neovim net-tools wget make gcc automake \
+  autoconf libtool tree iftop nethogs yum-utils htop cmake autoconf automake perl-CPAN libcurl-devel \
   gcc-c++ glibc-headers zlib-devel telnet ctags \
   expat-devel openssl-devel tig bash-completion libtermcap-devel ncurses-devel libevent-devel readline-devel
 
