@@ -71,7 +71,7 @@ sysctl -p
 
 # Max open files
 found=$(grep -c "^* soft nproc" /etc/security/limits.conf)
-if ! [ $found -gt "0" ]; then
+if ! [ "$found" -gt "0" ]; then
   cat >>/etc/security/limits.conf <<EOF
 * soft nproc 2048
 * hard nproc 16384
@@ -105,7 +105,7 @@ sudo yum -y install cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glib
 sudo yum -y install expat-devel openssl-devel tig bash-completion libtermcap-devel ncurses-devel libevent-devel readline-devel
 
 ### configure Command incomplete
-echo "source /usr/share/bash-completion/bash_completion" >> /etc/profile
+echo "source /usr/share/bash-completion/bash_completion" >>/etc/profile
 source /etc/profile
 
 ## configure time synchronization
@@ -120,5 +120,3 @@ git config --global credential.helper store
 git config --global core.longpaths true
 git config --global core.quotepath off
 git lfs install --skip-repo
-
-
