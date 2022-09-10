@@ -21,7 +21,7 @@ brew install --cask \
   miniconda android-platform-tools \
   pycharm goland intellij-idea datagrip phpstorm android-studio visual-studio-code \
   another-redis-desktop-manager \
-  transmission mpv atom bartender beyond-compare clipy contexts \
+  transmission atom bartender beyond-compare clipy contexts \
   dash docker iterm2 karabiner-elements keycastr licecap \
   marked slack spotify telegram typora whatsapp fig monitorcontrol
 
