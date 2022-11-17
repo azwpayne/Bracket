@@ -1,8 +1,22 @@
 k3s
 ===
 
+## Ignore WARNING
+
 ```bash
 # WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /etc/rancher/k3s/k3s.yaml
 # WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /etc/rancher/k3s/k3s.yaml
 chmod -R 600 /etc/rancher/k3s/
+```
+
+## Add configuration
+
+```bash
+sudo yum install bash-completion
+cat <<EOF>> /etc/profile 
+source /usr/share/bash-completion/bash_completion
+source <(kubectl completion bash)
+alias helm='helm3 --kubeconfig=/etc/rancher/k3s/k3s.yaml'
+source <(helm completion bash)
+EOF
 ```
