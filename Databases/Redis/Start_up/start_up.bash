@@ -4,7 +4,6 @@ PORT=3213
 read -p "please input your token to gender passwd: " token
 PASSWD=$(echo "${token}" | md5sum | base64)
 
-# shellcheck disable=SC2164
 mkdir -p /opt/redis/single_replica_set && cd "$_"
 
 redis-server --port ${PORT} \

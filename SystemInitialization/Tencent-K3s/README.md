@@ -12,11 +12,14 @@ chmod -R 600 /etc/rancher/k3s/
 ## Add configuration
 
 ```bash
-sudo yum install bash-completion
-cat <<EOF>> /etc/profile 
+sudo yum install -y bash-completion
+cat <<EOF>> /etc/bashrc
+# about k8s configs
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 alias helm='helm3 --kubeconfig=/etc/rancher/k3s/k3s.yaml'
 source <(helm completion bash)
 EOF
+
+source /etc/bashrc
 ```

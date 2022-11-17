@@ -1,10 +1,7 @@
 # via curl
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-# via wget
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
-npm install -g tnpm@latest --registry=http://registry.npm.alibaba-inc.com
+# npm install -g tnpm@latest --registry=http://registry.npm.alibaba-inc.com
 
 alias ccnpm="npm --registry=https://registry.npmmirror.com \
 --cache=$HOME/.npm/.cache/cnpm \
