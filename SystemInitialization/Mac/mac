@@ -8,14 +8,17 @@
 # arch is m1
 /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
 brew install \
-  coreutils gnutls bash bash-completion@2 less z mas entr tmux bc tmux-mem-cpu-load tmux-xpanes tree duf glances exa ag \
-  axel reattach-to-user-namespace isacikgoz/taps/tldr  colordiff pstree jq urlview tcpdump nmap readline rsync aria2 curl \
-  unrar netcat ttyrec ttygif ttyd the_silver_searcher id3lib libexif libmms faad2 terminal-notifier figlet fortune gnu-sed \
-  keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 pngcrush watch pidof pinfo atool exif cloc gnupg grc pango \
-  bat poppler icdiff git-cal git-extras pass peco ranger wget fd xmlstarlet highlight shellcheck sshfs ccat editorconfig \
-  ctop htop progress httpstat catimg fzf fzy ripgrep httpie pgcli zsh fish diff-so-fancy proselint subliminal yamllint \
-  mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils kubernetes-cli helm kubectx stern gawk pineentry-mac \
-  mysql mongodb-community redis nginx unbound jadx multitail git-lfs wtfutil gotop deno act dust bottom
+  coreutils gnutls bash bash-completion@2 less z mas entr tmux bc tmux-mem-cpu-load \
+  tmux-xpanes tree duf glances exa ag axel reattach-to-user-namespace isacikgoz/taps/tldr \
+  colordiff pstree jq urlview tcpdump nmap readline rsync aria2 curl unrar netcat ttyrec \
+  ttygif ttyd the_silver_searcher id3lib libexif libmms faad2 terminal-notifier figlet \
+  fortune gnu-sed keychain p7zip tarsnap spark exiv2 lnav ncdu calc tidy-html5 pngcrush \
+  watch pidof pinfo atool exif cloc gnupg grc pango bat poppler icdiff git-cal git-extras \
+  pass peco ranger wget fd xmlstarlet highlight shellcheck sshfs ccat editorconfig ctop htop \
+  progress httpstat catimg fzf fzy ripgrep httpie pgcli zsh fish diff-so-fancy proselint \
+  subliminal yamllint mpc mpv neomutt jrnl rclone resty task vit tig glyr findutils \
+  kubernetes-cli helm kubectx stern gawk pineentry-mac mysql mongodb-community redis \
+  nginx unbound jadx multitail git-lfs wtfutil gotop deno act dust bottom
 
 brew install --cask \
   miniconda android-platform-tools \
@@ -25,4 +28,7 @@ brew install --cask \
   dash docker iterm2 karabiner-elements keycastr licecap \
   marked slack spotify telegram typora whatsapp fig monitorcontrol
 
-brew update && brew upgrade && brew doctor && brew cleanup
+brew update &&
+  brew upgrade &&
+  brew doctor &&
+  brew cleanup

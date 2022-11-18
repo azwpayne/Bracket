@@ -102,14 +102,14 @@ firewall-cmd --reload
 #grub2-set-default 0 && uname -r
 
 ## update or upgrade
-yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache && \
-yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
-  wget make gcc automake autoconf libtool tree iftop nethogs yum-utils \
-  cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq \
-  expat-devel openssl-devel tig bash-completion
+yum -y update && yum -y upgrade && yum -y update-minimal && yum clean all && yum makecache &&
+  yum -y install epel-release curl gnupg conntrack ipvsadm ipset jq iptables sysstat libseccomp vim net-tools git \
+    wget make gcc automake autoconf libtool tree iftop nethogs yum-utils \
+    cmake autoconf automake perl-CPAN libcurl-devel gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq \
+    expat-devel openssl-devel tig bash-completion
 
 ### configure Command incomplete
-echo "source /usr/share/bash-completion/bash_completion" >> /etc/bashrc
+echo "source /usr/share/bash-completion/bash_completion" >>/etc/bashrc
 source /etc/bashrc
 
 ## configure time synchronization

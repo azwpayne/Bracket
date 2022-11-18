@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# init
 sudo apt -y update &&
   apt -y upgrade &&
   apt -y full-upgrade &&
@@ -9,13 +10,14 @@ sudo apt -y update &&
 # Install dependencies
 sudo apt install -y apt-transport-https ca-certificates \
   curl gnupg lsb-release wget make gcc automake \
-  autoconf libtool tree iftop nethogs jnettop htop fd-find git tig ntp ntpdate \
-  build-essential libssl-dev zliblg-dev libbz2-dev \
-  libreadline-dev libsqlite3-dev llvm libncurses5-dev \
-  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev \
-  python-openssl g++ libgcc-9-dev gcc-9-base mitmproxy
+  autoconf libtool tree iftop nethogs jnettop htop \
+  fd-find git tig ntp ntpdate build-essential libssl-dev \
+  zliblg-dev libbz2-dev libreadline-dev libsqlite3-dev \
+  llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
+  libffi-dev liblzma-dev python-openssl g++ libgcc-9-dev \
+  gcc-9-base mitmproxy cmake gcc-c++ glibc-headers zlib-devel \
+  git-lfs telnet ctags lrzsz jq expat-devel openssl-devel
 
-sudo apt intall cmake gcc-c++ glibc-headers zlib-devel git-lfs telnet ctags lrzsz jq expat-devel openssl-devel
 # Install miniconda
 wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh &&
   sh Miniconda3-latest-Linux-x86_64.sh

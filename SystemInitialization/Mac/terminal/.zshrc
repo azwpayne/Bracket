@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -10,9 +12,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="random"
 
-export HISTSIZE=999999
-export HISTFILESIZE=999999
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+export HISTSIZE=99999999
+export HISTFILESIZE=99999999
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -63,8 +65,7 @@ export HISTFILESIZE=999999
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-HIST_STAMPS="yyyy-mm-dd"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -74,13 +75,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# gitopen: git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
-# zsh-z: git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
-# zsh-autosuggestions: git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-# zsh-syntax-highlighting: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 plugins=(
     rails
     git
+    adb
     textmate
     lighthouse
     bundler
@@ -95,7 +94,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -104,69 +102,80 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-export EDITOR='nvim'
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
-export ARCHFLAGS="-arch arm64"
+# export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+#
+# Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
+alias n="nvim"
 alias cp='cp -i'
 alias mv='mv -i'
-alias vim="nvim"
-alias brewski='brew update; brew upgrade; brew cleanup; brew doctor'
+alias brewski='brew update; brew upgrade; brew cleanup'
 alias pyfmt='fd . -e py | xargs black'
 alias gofmtl='fd . -e go | xargs gofmt -w'
+alias ccnpm="npm --registry=https://registry.npmmirror.com --cache=$HOME/.npm/.cache/cnpm --disturl=https://npmmirror.com/mirrors/node --userconfig=$HOME/.cnpmrc"
+alias pipim='python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
+alias ratel='sh ~/WorkSpace/Security/ratel-engine/ratel.sh'
+alias ratel_template='sh ~/WorkSpace/Security/ratel-module-template/template.sh'
 
-# util
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export GUILE_TLS_CERTIFICATE_DIRECTORY=/opt/homebrew/etc/gnutls/
-. /opt/homebrew/etc/profile.d/z.sh
-export PATH="/opt/homebrew/opt/bc/bin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+# Homebrew
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
+# docker 
+export DOCKER_USER='awesomepayne'
+# go env
+export GO111MODULE="on"
+export GOPATH="/Users/payne/WorkSpace/Go"
+export GOBIN="${GOPATH}/bin"
+export GOPROXY="https://goproxy.cn,direct"
+export PATH="${GOBIN}:${GOPATH}:$PATH"
+
+# java env
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home"
+export PATH="\${JAVA_HOME}/bin":"${PATH}"
+export CLASS_PATH="\${JAVA_HOME}/lib"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/payne/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/payne/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/payne/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/payne/miniconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# kubectl completion
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 
-# program env 
-## php
-export PATH="/opt/homebrew/opt/php@7.3/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@7.3/sbin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export DVM_DIR="/Users/payne/.dvm"
+export PATH="$DVM_DIR/bin:$PATH"
 
-## node
-export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/node@16/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/node@16/include"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-## go
-export GO111MODULE="on"
-export GOROOT="/opt/homebrew/opt/go@1.16/bin"
-export GOPATH="/Users/payne/Workspace/go"
-export GOBIN="${GOPATH}/bin"
-export PATH="${GOROOT}:${GOBIN}:${GOPATH}:$PATH"
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
+
+source /Users/payne/.config/broot/launcher/bash/br

@@ -95,7 +95,7 @@ if [ "$1" == "call" ]; then
 fi
 
 if [ "$1" == "clean" ]; then
-  rm -rf *.log
+  rm -rf "*.log"
   rm -rf appendonly*.aof
   rm -rf dump*.rdb
   rm -rf nodes*.conf
@@ -103,7 +103,7 @@ if [ "$1" == "clean" ]; then
 fi
 
 if [ "$1" == "clean-logs" ]; then
-  rm -rf *.log
+  rm -rf "*.log"
   exit 0
 fi
 
