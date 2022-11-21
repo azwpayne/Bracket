@@ -17,7 +17,7 @@ cat <<EOF>> /etc/bashrc
 # about k8s configs
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
-alias helm='helm3 --kubeconfig=/etc/rancher/k3s/k3s.yaml'
+alias helm='helm --kubeconfig=/etc/rancher/k3s/k3s.yaml'
 source <(helm completion bash)
 EOF
 
