@@ -3,9 +3,10 @@
 ## time zone setting
 
 ```bash
-dpkg-reconfihure tzdata
-apt install -y xfont-intl-chinese
-apt install tff-wqy-microhei
+dpkg-reconfihure tzdata &&
+  apt install -y xfont-intl-chinese &&
+  apt install tff-wqy-microhei
+
 ```
 
 ## install Input editor

@@ -21,8 +21,6 @@ python3 -m pip install -U numpy pandas sympy scipy statsmodels opencv-python pil
 ```
 
 ## referer
-
-https://www.zybuluo.com/Rays/note/2291566
-
-https://github.com/rasbt/machine-learning-notes/tree/main/benchmark/pytorch-m1-gpu
+- https://www.zybuluo.com/Rays/note/2291566
+- https://github.com/rasbt/machine-learning-notes/tree/main/benchmark/pytorch-m1-gpu
 
