@@ -5,7 +5,7 @@ k3s
 
 ```bash
 sudo yum install -y bash-completion
-cat <<EOF>> /etc/bashrc
+cat <<EOF >>/etc/bashrc
 # about k8s configs
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)

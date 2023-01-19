@@ -1,15 +1,10 @@
 #!/usr/bin/bash
 # Install single redis
-Redis_Version=6.2.5
-
-# download Redis
-wget "https://download.redis.io/releases/redis-${Redis_Version}.tar.gz"
-
-## create folder and  unzip Redis.tar.gz file
-mkdir -p /opt/redis/ && tar -xzf redis-${Redis_Version}.tar.gz -C /opt/redis/
-
-## compile redis
-cd /opt/redis/redis-${Redis_Version} && make
+#Redis_VERSION=6.2.5
+#curl -fsSL -o /tmp/redis_${Redis_VERSION}.tar.gz https://download.redis.io/releases/redis-${Redis_VERSION}.tar.gz &&
+#  tar -zxf /tmp/redis_${Redis_VERSION}.tar.gz -C /opt &&
+#  rm /tmp/redis_${Redis_VERSION}.tar.gz &&
+#  ln -s /opt/redis_${Redis_VERSION} /opt/redis
 
 ## link and Configure environment variables of redis
 ln -s /opt/redis/redis-${Redis_Version}/ /usr/local/redis && echo "export PATH=/usr/local/redis/src:\$PATH" >>/etc/profile
